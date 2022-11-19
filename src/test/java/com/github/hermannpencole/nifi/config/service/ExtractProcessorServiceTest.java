@@ -17,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +54,7 @@ public class ExtractProcessorServiceTest {
 
     @Before
     public void setup() throws IOException {
-        temp = File.createTempFile("tempfile", ".tmp");
+        temp = Files.createTempFile("tempfile", ".tmp").toFile();
         response = TestUtils.createProcessGroupFlowEntity("idComponent", "nameComponent");
 
         when(processGroupsApiMock.getConnections(anyString())).thenReturn(new ConnectionsEntity());
